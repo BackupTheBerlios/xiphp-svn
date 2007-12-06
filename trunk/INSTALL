@@ -1,0 +1,11 @@
+Fichier de configuration
+=========================
+
+(1).- Vous devez modifier les fichiers de configuration pour être conforme avec 
+votre environnement, ils se trouvent dans le dossier "/config". Les fichiers 
+avec l'extention ".demo" sont les fichiers que vous devez modifier. Par la 
+suite, vous devez enlever l'extention ".demo" pour ne garder que l'extention 
+".php".
+
+(2).- Dans le dossier "/config" vous trouverez également les fichiers SQL pour 
+la création de votre base de données. 

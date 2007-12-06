@@ -1,0 +1,42 @@
+*******************************
+     eXtended Interface PHP
+*******************************
+
+Interface de développement web en PHP.
+
+Ce projet a pour but de créer une interface entre le XHTML et PHP pour la 
+création d'application web. Et ce, à l'aide d'une collection de classes, clef en 
+main. De plus, il est à noter que la version 5 de PHP sera utilisée.
+
+Le but premier du projet est de créer une interface PHP pour avoir le moins 
+possible à coder du XHTML, certes il ne l'éliminera pas au complet, mais il 
+tentera de le réduire au minimum. De plus, il permettra de faciliter la gestion 
+des sessions, et l'accès aux bases de données (principalement MySQL). Et 
+finalement, il tentera d'aider à la gestion générale de l'application web, avec 
+la gestion des langues, la gestion de thèmes (CSS), et la configuration globale 
+de l'application. 
+
+Site du projet :
+================
+  http://xiphp.yaugsoft.com
+  
+Documentation :
+===============
+  http://xiphp.yaugsoft.com/Doc
+  
+SVN Browse :
+============
+  http://...
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+* *   Attention bien lire le Cahier des charges dans le dossier /doc_dev  * *
+* *   Format .docx (Office2007) ou version PDF. C'est lui qui détermine   * *
+* *   tout ce qu'il y à savoir sur le développement du projet.            * *
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+(C) 2007, Production YaugSoft.
+Projet dirigé par : Patrick Guay <xiphp@yaugsoft.com>
+
+
+/**/
