@@ -26,6 +26,6 @@ define('DB_Name','xiphp');
 /**
  * Langue par defaut
  */ 
-define('DefLang','french')
+define('DEFLANG','french')
 
 ?>

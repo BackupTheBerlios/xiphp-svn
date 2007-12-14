@@ -1,22 +1,15 @@
 <?PHP
     /**
      * Fichier pour les tests de développement.
+	 * (ATTENTION!!! Sujet à changement fréquant, uniquement pour les test.)
      */
 
     /**
-     * Autochargement des classes au lieu de faire des "Require_once"
-     *
-     * Cette clase s'exécute automatiquement ne pas appeler directement.
-     *
-     * @access public
-     * @author Patrick Guay <xiphp@yaugsoft.com>
-     * @param  string Nom de classe
-     * @return void
+     * Liste les fichiers d'inclusion
      */
-    function __autoload($class_name)
-    {
-        require_once 'inc/'. $class_name . '.php';
-    }
+	require_once './inc/clsKernel.php';
+
+
 
     clsKernel::ShowInfoXIPHP();
 
@@ -25,7 +18,7 @@
     try
     {
   
-	throw new Exception('Message de cul d\'exception a marde',666);
+	throw new Exception($LANG["ERR_9001"],666);
 
 	}
     catch (Exception $e)

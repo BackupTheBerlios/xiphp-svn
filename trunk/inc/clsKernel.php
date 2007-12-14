@@ -8,6 +8,13 @@
 require_once './config/connect.php';
 /**#@-*/
 
+/**#@+
+ * Inclusion du fichier de langue par défault.
+ *
+ * <nom langue>.php = Donnnées de connection à la base de données.
+ */
+require './lang/'.DEFLANG.'.php';
+/**#@-*/
 
 
 
@@ -51,7 +58,7 @@ abstract class clsKernel
      * Constante de description du projet.
      */
     Const XIPHP_Version     = '0.1';
-    Const XIPHP_VersionDesc = 'Alpha';
+    Const XIPHP_VersionDesc = 'Pré-Alpha';
     Const XIPHP_Copyright   = '(c) 2007 Production YaugSoft';
     Const XIPHP_Licence     = 'GNU GPL v3 [http://www.gnu.org/licenses/gpl.html]';
     Const XIPHP_URLSite     = 'http://xiphp.yaugsoft.com';
