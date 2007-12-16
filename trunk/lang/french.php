@@ -8,10 +8,11 @@
 	 * Last update : 2007/12/14
      */
 
-	 $LANG = array(
-     	"ERR_9001"			=>	"Erreur non répertorier.",
-		"Yes"				=>	"Oui",
-		"No"				=>  "Non"
+	 $tLANG = array(
+     	'ERR_9001'			=>	'Erreur non répertoriée.',
+		'ERR_9020'			=>	'Fichier langage introuvable.',
+		'Yes'				=>	'Oui',
+		'No'				=>  'Non'
 
 	 );
 

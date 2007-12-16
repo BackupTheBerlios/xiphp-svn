@@ -10,20 +10,12 @@
 	require_once './inc/clsKernel.php';
 
 
-
+    // Affichage des infos du projet
     clsKernel::ShowInfoXIPHP();
 
-    echo DB_Server;
+	
+    echo clsKernel::Lng('Yes');
+	echo clsKernel::Lng('No');
 
-    try
-    {
-  
-	throw new Exception($LANG["ERR_9001"],666);
-
-	}
-    catch (Exception $e)
-    {
-    	clsKernel::ShowException($e);
-    }
 
 ?>

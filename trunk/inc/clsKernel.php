@@ -8,16 +8,6 @@
 require_once './config/connect.php';
 /**#@-*/
 
-/**#@+
- * Inclusion du fichier de langue par défault.
- *
- * <nom langue>.php = Donnnées de connection à la base de données.
- */
-require './lang/'.DEFLANG.'.php';
-/**#@-*/
-
-
-
 /**
  *  Classe de base de toute la hiérarchie du projet XI-PHP
  *
@@ -57,14 +47,71 @@ abstract class clsKernel
     /**#@+
      * Constante de description du projet.
      */
-    Const XIPHP_Version     = '0.1';
-    Const XIPHP_VersionDesc = 'Pré-Alpha';
-    Const XIPHP_Copyright   = '(c) 2007 Production YaugSoft';
-    Const XIPHP_Licence     = 'GNU GPL v3 [http://www.gnu.org/licenses/gpl.html]';
-    Const XIPHP_URLSite     = 'http://xiphp.yaugsoft.com';
-    Const XIPHP_URLRepos    = 'n/a';
-    Const XIPHP_Contact     = 'Patrick Guay [xiphp@yaugsoft.com]';
+    Const sXIPHP_Version     = '0.1';
+    Const sXIPHP_VersionDesc = 'Pré-Alpha';
+    Const sXIPHP_Copyright   = '(c) 2007 Production YaugSoft';
+    Const sXIPHP_Licence     = 'GNU GPL v3 [http://www.gnu.org/licenses/gpl.html]';
+    Const sXIPHP_URLSite     = 'http://xiphp.yaugsoft.com';
+    Const sXIPHP_URLRepos    = 'http://developer.berlios.de/svn/?group_id=9134';
+    Const sXIPHP_Contact     = 'Patrick Guay [xiphp@yaugsoft.com]';
     /**#@-*/
+
+    /**
+     * Langue active, la langue par défaut est attribué par "DEFLANG"
+     */
+	static $sActiveLang = DEFLANG;
+
+
+    /**
+     * Pour afficher
+     *
+     * @static
+     * @author  Patrick Guay <xiphp@yaugsoft.com>
+     * @since   2007/12/16 (v. 0.1)
+     * @param   string [$sTag] Nom de la clef de référence dans le tableau du langage.
+     * @return  string
+	 * @see     Le nom de la langue active est déterminé par $sActiveLang et modifiable par la function SetLang
+     */
+	static function Lng($sTag)
+	{
+        try {
+			if (! file_exists('./lang/'.self::$sActiveLang.'.php')) {
+            	throw new Exception('CRITICAL LANGUAGE ERROR ::: ./lang/'.self::$sActiveLang.'.php',0);
+			} else {
+				require './lang/'.self::$sActiveLang.'.php';
+				Return $tLANG[$sTag];
+	        }
+		}
+		catch (Exception $e) {
+		    self::ShowException($e);
+		}
+	}
+
+    /**
+     * Changement de la langue active.
+	 *
+	 * Prendre note que le fichier langue doit exister, sinon il y aura une exception. Si vide prend la langue par défaut
+     *
+     * @access  public
+     * @author  Patrick Guay <xiphp@yaugsoft.com>
+     * @since   2007/12/16 (v. 0.1)
+     * @param   string [$sLangName] Nom de la nouvelle langue,
+     * @return  boolean  Si le changement est effectué correctement, retourne "true"
+     */
+	static function SetLang($sLangName = DEFLANG)
+	{
+        try {
+			if (! file_exists('./lang/'.$sLangName.'.php')) {
+            	throw new Exception(self::Lng('ERR_9020'),9020);
+			} else {
+				self::$sActiveLang = $sLangName;
+				return true;
+	        }
+		}
+		catch (Exception $e) {
+		    self::ShowException($e);
+		}
+	}
 
     /**
      * Affichage des constante de description du projet.
@@ -79,12 +126,12 @@ abstract class clsKernel
         $str  = '<hr size="5" />';
         $str .= '<strong>XI-PHP</strong>  (eXtended Interface PHP) <br />';
         $str .= '<strong>¯¯_¯_¯_¯_¯_¯_¯__</strong> <br />';
-        $str .= '<strong>Version :</strong> '.self::XIPHP_Version.' ('.self::XIPHP_VersionDesc.') <br />';
-		$str .= '<strong>Copyright :</strong> '.self::XIPHP_Copyright.' <br />';
-        $str .= '<strong>Licence :</strong> '.self::XIPHP_Licence.' <br />';
-        $str .= '<strong>URL :</strong> <a href="'.self::XIPHP_URLSite.'">'.self::XIPHP_URLSite.'</a> <br />';
-        $str .= '<strong>URL Repository :</strong> <a href="'.self::XIPHP_URLRepos.'">'.self::XIPHP_URLRepos.'</a> <br />';
-        $str .= '<strong>Contact :</strong> '.self::XIPHP_Contact.' <br />';
+        $str .= '<strong>Version :</strong> '.self::sXIPHP_Version.' ('.self::sXIPHP_VersionDesc.') <br />';
+		$str .= '<strong>Copyright :</strong> '.self::sXIPHP_Copyright.' <br />';
+        $str .= '<strong>Licence :</strong> '.self::sXIPHP_Licence.' <br />';
+        $str .= '<strong>URL :</strong> <a href="'.self::sXIPHP_URLSite.'">'.self::sXIPHP_URLSite.'</a> <br />';
+        $str .= '<strong>URL Repository :</strong> <a href="'.self::sXIPHP_URLRepos.'">'.self::sXIPHP_URLRepos.'</a> <br />';
+        $str .= '<strong>Contact :</strong> '.self::sXIPHP_Contact.' <br />';
         $str .= '<hr size="5" /> <br />';
         echo $str;
     }
@@ -98,7 +145,7 @@ abstract class clsKernel
      * @param   exception [$e] Information transmise par une exception
 	 * @param   string [$sTitle] Titre de l'exception, par défaul = 'XI-PHP Exception'
      * @return  void
-	 * @see     Les messages d'erreur doivent être inclus dans les fichiers langage (ex. lang/fr.lng.php)
+	 * @see     Les messages d'erreur doivent être inclus dans les fichiers langage (ex. lang/french.php)
      */
     static function ShowException($e,$sTitle = 'XI-PHP Exception')
     {
@@ -119,7 +166,8 @@ abstract class clsKernel
     }
 
 
-}    
+}
+
 ?>
 
 
