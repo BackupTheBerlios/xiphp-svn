@@ -13,9 +13,9 @@
     // Affichage des infos du projet
     clsKernel::ShowInfoXIPHP();
 
-	
+
     echo clsKernel::Lng('Yes');
 	echo clsKernel::Lng('No');
-
+     
 
 ?>

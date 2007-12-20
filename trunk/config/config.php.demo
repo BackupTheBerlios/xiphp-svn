@@ -1,0 +1,11 @@
+<?php
+/**
+ * Configuration général.
+ */
+
+/**
+ * Langue par defaut
+ */ 
+define('DEFLANG','french')
+
+?>

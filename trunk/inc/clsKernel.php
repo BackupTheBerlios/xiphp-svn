@@ -4,8 +4,10 @@
  * Inclusion des fichiers de configuration.
  *
  * connect.php = Donnnées de connection à la base de données.
+ * config.php = Configuration général de XI-PHP. 
  */
 require_once './config/connect.php';
+require_once './config/config.php';
 /**#@-*/
 
 /**
@@ -14,8 +16,7 @@ require_once './config/connect.php';
  *  C'est à partir de cette classe que toute nouvelle classe doit hérité (directement
  *  ou inderectement par héritage) pour faire partie d'un projet XI-PHP, ou plus encore
  *  pour créer une extention à XI-PHP. C'est le coeur de l'interface, c'est cette classe
- *  qui contrôle les fichiers de configuration et de langage. Par le fait même, c'est
- *  cette classe qui manipule les accès au base de donnée.
+ *  qui contrôle les fichiers de configuration et de langage.
  *
  *   This file is part of XI-PHP (eXtended Interface PHP) <http://xiphp.yaugsoft.com>
  *   Copyright (C) 2007  Production YaugSoft <xiphp@yaugsoft.com>
@@ -92,7 +93,7 @@ abstract class clsKernel
 	 *
 	 * Prendre note que le fichier langue doit exister, sinon il y aura une exception. Si vide prend la langue par défaut
      *
-     * @access  public
+     * @static
      * @author  Patrick Guay <xiphp@yaugsoft.com>
      * @since   2007/12/16 (v. 0.1)
      * @param   string [$sLangName] Nom de la nouvelle langue,
