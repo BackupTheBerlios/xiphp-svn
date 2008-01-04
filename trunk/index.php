@@ -7,15 +7,17 @@
     /**
      * Liste les fichiers d'inclusion
      */
-	require_once './inc/clsKernel.php';
+	require_once './inc/clsDB.php';
 
 
     // Affichage des infos du projet
     clsKernel::ShowInfoXIPHP();
 
+	$oDB = New clsDB();
 
-    echo clsKernel::Lng('Yes');
-	echo clsKernel::Lng('No');
-     
+   	$oDB->RunQueryFromFile('./config/config.sql');
+
+	$oDB = null;
+
 
 ?>

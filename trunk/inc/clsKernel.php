@@ -19,7 +19,7 @@ require_once './config/config.php';
  *  qui contrôle les fichiers de configuration et de langage.
  *
  *   This file is part of XI-PHP (eXtended Interface PHP) <http://xiphp.yaugsoft.com>
- *   Copyright (C) 2007  Production YaugSoft <xiphp@yaugsoft.com>
+ *   Copyright (C) 2007..08  Production YaugSoft <xiphp@yaugsoft.com>
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ require_once './config/config.php';
  * @package    xiphp
  * @subpackage class
  * @author     Patrick Guay <xiphp@yaugsoft.com>
- * @copyright  (C) 2007 Production YaugSoft.
+ * @copyright  (C) 2007..08 Production YaugSoft.
  * @license    http://www.gnu.org/licenses/gpl.html GNU GPL
  * @since      2007/10/27 (v. 0.1)
  *
@@ -64,7 +64,7 @@ abstract class clsKernel
 
 
     /**
-     * Pour afficher
+     * Pour afficher un texte d'une langue selon son tag.
      *
      * @static
      * @author  Patrick Guay <xiphp@yaugsoft.com>
