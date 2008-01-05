@@ -129,6 +129,7 @@ class clsDB extends clsKernel
      */
 	public function RunQueryFromFile($sFilePath)
 	{
+		$bExecOK = false;
         try {
 
         	if ($fSQL = @fopen($sFilePath, 'r')) {
@@ -152,16 +153,17 @@ class clsDB extends clsKernel
 					}
 				}
 				@fclose($fSQL);
-				return true;
+				$bExecOK = true;
 
 			} else {
 				throw new Exception(self::Lng('ERR_9110').$sFilePath,9110);
-				return false;
 			}
 		}
         catch (Exception $e) {
             self::ShowException($e);
         }
+		
+		return $bExecOK;
 	}
 
 }
