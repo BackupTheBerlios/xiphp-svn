@@ -50,7 +50,7 @@ abstract class clsKernel
      */
     Const sXIPHP_Version     = '0.1';
     Const sXIPHP_VersionDesc = 'Pré-Alpha';
-    Const sXIPHP_Copyright   = '(c) 2007 Production YaugSoft';
+    Const sXIPHP_Copyright   = '(c) 2007..08 Production YaugSoft';
     Const sXIPHP_Licence     = 'GNU GPL v3 [http://www.gnu.org/licenses/gpl.html]';
     Const sXIPHP_URLSite     = 'http://xiphp.yaugsoft.com';
     Const sXIPHP_URLRepos    = 'http://developer.berlios.de/svn/?group_id=9134';

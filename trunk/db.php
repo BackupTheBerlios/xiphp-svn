@@ -19,15 +19,29 @@
 
 	$oDB = New clsDB();
 
+		$tData = array('txt'=>'Text Add 1','numb'=>455);
+		echo $oDB->Add('test',$tData);
+
+		$tData = array('txt'=>'Text Add 2','numb'=>456);
+		echo $oDB->Add('test',$tData);
+
+		$tData = array('txt'=>'Text Add 3','numb'=>457);
+		echo $oDB->Add('test',$tData);
 
 
+        $tData = array('txt'=>'Text Add 2b','numb'=>4561);
+		echo $oDB->Update('test',$tData,'numb=456');
 
+        
+		echo $oDB->Delete('test','id>2 and id<5');
 
 	$oDB = null;
 
+
+
 ?>
 
-
+	<p>Requête exécuté.</p>
 
 </body>
 

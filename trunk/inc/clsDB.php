@@ -106,8 +106,8 @@ class clsDB extends clsKernel
         try {
 
             $sSQL = trim($sSQL);
-        	$oTmp = $this->oDB->query($sSQL);
-            return $oTmp;
+        	return $this->oDB->query($sSQL);
+
 		}
         catch (Exception $e) {
             self::ShowException($e);
@@ -118,8 +118,8 @@ class clsDB extends clsKernel
     /**
      * Exécution d'une requête SQL à partir d'un fichier.
      *
-	 * 	Prend en compte les lignes vide et les lignes de commentaire débutant par "--",
-	 *	donc techniquement les requètes en provenance de phpMyAdmin sont valide.
+	 * 	Prend en compte les lignes vide et les lignes de commentaire débutant par "--".
+	 *	Techniquement, les requètes en provenance de phpMyAdmin sont valide.
 	 *
      * @access	public
      * @author  Patrick Guay <xiphp@yaugsoft.com>
@@ -162,9 +162,130 @@ class clsDB extends clsKernel
         catch (Exception $e) {
             self::ShowException($e);
         }
-		
+
 		return $bExecOK;
 	}
+
+    /**
+     * Ajout d'une entrée dans une table
+     *
+     * @access	public
+     * @author  Patrick Guay <xiphp@yaugsoft.com>
+     * @since   2008/01/04 (v. 0.1)
+	 * @param   string [$sTable] Nom de la table de la BD où ajouter les données.
+	 * @param	table [$tField] Liste des colones / valeurs (Clef / valeur)
+     * @return  true/false si ok
+     */
+	public function Add($sTable,$tField)
+	{
+		$bExecOK = false;
+        try {
+
+        	$sSQL = "INSERT INTO $sTable SET ";
+			foreach ($tField as $sCol => $sVal) {
+            	$sSQL .= $sCol.'=';
+                if (is_string($sVal)) {
+                	$sSQL .= '"'.$sVal.'"';
+                } else {
+                    $sSQL .= $sVal;
+                }
+                $sSQL .= ',';
+			}
+
+            $sSQL = substr($sSQL,0,-1);//suppression de la dernière virgule
+
+			if ($this->RunQuery($sSQL)) {
+            	$bExecOK = true;
+			} else {
+				throw new Exception(self::Lng('ERR_9112').$sSQL,9112);
+            }
+
+        }
+        catch (Exception $e) {
+            self::ShowException($e);
+        }
+
+		return $bExecOK;
+	}
+
+    /**
+     * Modification d'une donnée dans une table.
+     *
+     * @access	public
+     * @author  Patrick Guay <xiphp@yaugsoft.com>
+     * @since   2008/01/08 (v. 0.1)
+     * @param   string [$sTable] Nom de la table de la BD où modifier les données.
+	 * @param	table [$tField] Liste des colones / valeurs (Clef / valeur) à modifier.
+	 * @param   string [$sWhere] Condition de modification
+     * @return  true/false si ok
+     */
+	public function Update($sTable,$tField,$sWhere)
+	{
+        $bExecOK = false;
+        try {
+
+        	$sSQL = "UPDATE $sTable SET ";
+			foreach ($tField as $sCol => $sVal) {
+            	$sSQL .= $sCol.'=';
+                if (is_string($sVal)) {
+                	$sSQL .= '"'.$sVal.'"';
+                } else {
+                    $sSQL .= $sVal;
+                }
+                $sSQL .= ',';
+			}
+            $sSQL = substr($sSQL,0,-1);//suppression de la dernière virgule
+			$sSQL .= ' WHERE '.$sWhere;
+
+			if ($this->RunQuery($sSQL)) {
+            	$bExecOK = true;
+			} else {
+				throw new Exception(self::Lng('ERR_9113').$sSQL,9113);
+            }
+
+        }
+        catch (Exception $e) {
+            self::ShowException($e);
+        }
+
+		return $bExecOK;
+	}
+
+    /**
+     * Suppression d'une donnée dans une table.
+     *
+     * @access 	public
+     * @author  Patrick Guay <xiphp@yaugsoft.com>
+     * @since   2008/01/08 (v. 0.1)
+     * @param   string [$sTable] Nom de la table de la BD où supprimer les données.
+	 * @param   string [$sWhere] Condition de suppression (Vide par défaut). Si vide supprime toutes les lignes de la table.
+     * @return  true/false si ok
+     */
+	public function Delete($sTable,$sWhere="")
+	{
+        $bExecOK = false;
+        try {
+
+        	$sSQL = "DELETE FROM $sTable";
+			if ($sWhere <> "") {
+            	$sSQL .= ' WHERE '.$sWhere;
+            }
+
+			if ($this->RunQuery($sSQL)) {
+            	$bExecOK = true;
+			} else {
+				throw new Exception(self::Lng('ERR_9114').$sSQL,9114);
+            }
+
+        }
+        catch (Exception $e) {
+            self::ShowException($e);
+        }
+
+		return $bExecOK;
+
+	}
+
 
 }
 ?>

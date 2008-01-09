@@ -26,17 +26,18 @@
 -- Structure de la table de test (table temporaire pour les tests) `test`
 --
 
-DROP TABLE IF EXISTS `test`;
-CREATE TABLE `test` (
-  `id` int(11) NOT NULL auto_increment,
-  `txt` text NOT NULL,
-  PRIMARY KEY  (`id`)
+DROP TABLE IF EXISTS test;
+CREATE TABLE test (
+  id int(11) NOT NULL auto_increment,
+  txt text NOT NULL,
+  numb int(11) NOT NULL,
+  PRIMARY KEY  (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
 -- Contenu
 
-INSERT INTO `test` (`id`, `txt`) VALUES
-(1, 'Texte -1'),
-(2, 'Texte -2');
+INSERT INTO test (id, txt, numb) VALUES
+(1, 'Texte -1', 111),
+(2, 'Texte -2', 222);
 
 -- --------------------------------------------------------

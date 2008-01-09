@@ -8,4 +8,4 @@ suite, vous devez enlever l'extention ".demo" pour ne garder que l'extention
 ".php".
 
 (2).- Dans le dossier "/config" vous trouverez également les fichiers SQL pour 
-la création de votre base de données. 
+la mise en place de votre base de données. 
